@@ -93,9 +93,10 @@ class AppUpdateManager(
                 )
 
                 val updateDir = File(context.externalCacheDir ?: context.cacheDir, "updates").apply { mkdirs() }
-                val targetFile = File(updateDir, "whatsapp_update_${updateInfo.latestVersionCode}.apk")
-
                 val downloadUrl = updateInfo.downloadUrl
+                val fileName = downloadUrl.substringAfterLast("/").takeIf { it.endsWith(".apk", ignoreCase = true) } 
+                    ?: "update_${updateInfo.latestVersionCode}.apk"
+                val targetFile = File(updateDir, fileName)
 
                 apkDownloader.downloadAsFlow(
                     url = downloadUrl,
@@ -125,7 +126,7 @@ class AppUpdateManager(
                             try {
                                 val publicDownloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
                                 if (publicDownloadsDir != null && publicDownloadsDir.exists()) {
-                                    val publicApk = File(publicDownloadsDir, "whatsapp.apk")
+                                    val publicApk = File(publicDownloadsDir, fileName)
                                     progress.file.copyTo(publicApk, overwrite = true)
                                     publicApk.setReadable(true, false)
                                 }

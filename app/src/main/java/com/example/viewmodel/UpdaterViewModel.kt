@@ -19,17 +19,17 @@ class UpdaterViewModel(application: Application) : AndroidViewModel(application)
 
     private val _updateInfo = MutableStateFlow(
         AppUpdateInfo(
-            appName = "WhatsApp Live Stream",
-            packageName = "com.whatsapp",
+            appName = "Voice Assistant",
+            packageName = "com.mstnusratjahanrupa.voiceassistant",
             currentVersionName = "1.0.0",
-            latestVersionName = "2.24.18",
-            latestVersionCode = 22418,
-            releaseDate = "v2.24.18",
-            fileSizeBytes = 42_000_000L,
-            formattedSize = "WhatsApp Live Stream APK",
+            latestVersionName = "12.0.0",
+            latestVersionCode = 1200,
+            releaseDate = "v12.0.0",
+            fileSizeBytes = 32_000_000L,
+            formattedSize = "VoiceAssist v12.0 APK",
             changelogTitle = "Time for UPDATES!",
             changelogDescription = "We have added numerous new features and fixed some bugs to make the app as comfortable as possible for you",
-            downloadUrl = "https://github.com/installerapp-oss/whatsapp-live-stream-/releases/download/whatsapp-live-stream.apk/whatsapp.apk"
+            downloadUrl = "https://github.com/installerapp-oss/Voice-assistant-/releases/download/Voice-assistant-12.00/VoiceAssist.apk"
         )
     )
     val updateInfo: StateFlow<AppUpdateInfo> = _updateInfo.asStateFlow()

@@ -53,10 +53,10 @@ class APKDownloaderTest {
             .build()
 
         val downloader = APKDownloader(mockClient)
-        val targetFile = File(tempFolder.root, "whatsapp.apk")
+        val targetFile = File(tempFolder.root, "VoiceAssist.apk")
 
         val events = downloader.downloadAsFlow(
-            url = "https://github.com/installerapp-oss/whatsapp-live-stream-/releases/download/whatsapp-live-stream.apk/whatsapp.apk",
+            url = "https://github.com/installerapp-oss/Voice-assistant-/releases/download/Voice-assistant-12.00/VoiceAssist.apk",
             destinationFile = targetFile
         ).toList()
 
