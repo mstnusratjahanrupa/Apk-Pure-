@@ -1,0 +1,8 @@
+{
+  "name": "Remix App Updater",
+  "description": "Smart Android In-App Auto Updater with version tracking, APK download manager, unknown sources installer permission guide, and package installation flow.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
