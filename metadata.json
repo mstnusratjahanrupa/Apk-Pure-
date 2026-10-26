@@ -1,5 +1,5 @@
 {
-  "name": "Remix App Updater",
+  "name": "Link Assistant",
   "description": "Smart Android In-App Auto Updater with version tracking, APK download manager, unknown sources installer permission guide, and package installation flow.",
   "requestFramePermissions": [],
   "majorCapabilities": [

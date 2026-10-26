@@ -22,6 +22,6 @@ dependencyResolutionManagement {
   }
 }
 
-rootProject.name = "App Updater"
+rootProject.name = "Link Assistant"
 
 include(":app")

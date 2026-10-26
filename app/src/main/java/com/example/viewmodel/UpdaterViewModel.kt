@@ -18,27 +18,12 @@ class UpdaterViewModel(application: Application) : AndroidViewModel(application)
     val updateManager = AppUpdateManager(application, viewModelScope)
 
     private val _updateInfo = MutableStateFlow(
-        AppUpdateInfo(
-            appName = "Voice Assistant",
-            packageName = "com.mstnusratjahanrupa.voiceassistant",
-            currentVersionName = "1.0.0",
-            latestVersionName = "12.0.0",
-            latestVersionCode = 1200,
-            releaseDate = "v12.0.0",
-            fileSizeBytes = 32_000_000L,
-            formattedSize = "VoiceAssist v12.0 APK",
-            changelogTitle = "Time for UPDATES!",
-            changelogDescription = "We have added numerous new features and fixed some bugs to make the app as comfortable as possible for you",
-            downloadUrl = "https://github.com/installerapp-oss/Voice-assistant-/releases/download/Voice-assistant-12.00/VoiceAssist.apk"
-        )
+        AppUpdateInfo()
     )
     val updateInfo: StateFlow<AppUpdateInfo> = _updateInfo.asStateFlow()
 
     private val _flowStep = MutableStateFlow(UpdateFlowStep.IDLE)
     val flowStep: StateFlow<UpdateFlowStep> = _flowStep.asStateFlow()
-
-    private val _showFileMediaDialog = MutableStateFlow(false)
-    val showFileMediaDialog: StateFlow<Boolean> = _showFileMediaDialog.asStateFlow()
 
     private val _showSecurityDialog = MutableStateFlow(false)
     val showSecurityDialog: StateFlow<Boolean> = _showSecurityDialog.asStateFlow()
@@ -79,29 +64,12 @@ class UpdaterViewModel(application: Application) : AndroidViewModel(application)
         }
     }
 
+    /**
+     * Direct update: No unnecessary media/storage permission dialog.
+     * Android does not require storage permission to download to internal/cache storage.
+     */
     fun onUpdateClicked() {
-        // Step 1: Open file & media storage permission dialog
-        _flowStep.value = UpdateFlowStep.STORAGE_PERMISSION_POPUP
-        _showFileMediaDialog.value = true
-    }
-
-    fun onFilePermissionAllowed() {
-        _showFileMediaDialog.value = false
-        // Step 2: Check unknown sources install permission
-        val hasInstallPermission = updateManager.refreshPermissionStatus()
-        if (hasInstallPermission) {
-            // Permission already granted -> proceed to download
-            startDownloadProcess()
-        } else {
-            // Need unknown sources permission -> show security dialog
-            _flowStep.value = UpdateFlowStep.UNKNOWN_SOURCES_POPUP
-            _showSecurityDialog.value = true
-        }
-    }
-
-    fun onFilePermissionDenied() {
-        _showFileMediaDialog.value = false
-        _flowStep.value = UpdateFlowStep.IDLE
+        startDownloadProcess()
     }
 
     fun onSecurityDialogSettingsClicked() {

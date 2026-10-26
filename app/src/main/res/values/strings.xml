@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">App Updater</string>
+    <string name="app_name">Link Assistant</string>
     <string name="update_available">Update available</string>
     <string name="time_for_updates">Time for UPDATES!</string>
     <string name="update_description">We have added numerous new features and fixed some bugs to make the app as comfortable as possible for you</string>

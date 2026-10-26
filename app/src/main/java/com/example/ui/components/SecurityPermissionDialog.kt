@@ -7,11 +7,13 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.BasicAlertDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -57,19 +59,17 @@ fun SecurityPermissionDialog(
                 ) {
                     Box(
                         modifier = Modifier
-                            .size(38.dp)
+                            .size(42.dp)
                             .clip(RoundedCornerShape(10.dp))
-                            .background(
-                                Brush.linearGradient(
-                                    colors = listOf(Color(0xFF8B5CF6), Color(0xFFC026D3))
-                                )
-                            ),
+                            .background(Color(0xFF25D366)),
                         contentAlignment = Alignment.Center
                     ) {
                         Image(
-                            painter = painterResource(id = R.drawable.ic_octopus_mascot),
+                            painter = painterResource(id = R.drawable.ic_whatsapp_logo),
                             contentDescription = appName,
-                            modifier = Modifier.size(24.dp)
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .clip(RoundedCornerShape(10.dp))
                         )
                     }
 
